@@ -9,10 +9,10 @@ import json
 class ContactsDB:
 
 	def __init__(self):
-        urllib.parse.uses_netloc.append("postgres")
-        url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
+		urllib.parse.uses_netloc.append("postgres")
+		url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
-        self.connection = psycopg2.connect(
+		self.connection = psycopg2.connect(
             cursor_factory=psycopg2.extras.RealDictCursor,
             database=url.path[1:],
             user=url.username,
@@ -21,7 +21,7 @@ class ContactsDB:
             port=url.port
         )
 
-        self.cursor = self.connection.cursor()
+		self.cursor = self.connection.cursor()
 
 	def __del__(self):
 		self.connection.close()
@@ -30,9 +30,9 @@ class ContactsDB:
 		self.cursor.execute("SELECT * FROM contacts")
 		return self.cursor.fetchall()
 
-    def createContactsTable(self):
-        self.cursor.execute("CREATE TABLE IF NOT EXISTS contacts (id SERIAL PRIMARY KEY, phone VARCHAR(255), ethnicity VARCHAR(255), she_from VARCHAR(255), body_type VARCHAR(255), does VARCHAR(255))")
-        self.connection.commit()
+	def createContactsTable(self):
+		self.cursor.execute("CREATE TABLE IF NOT EXISTS contacts (id SERIAL PRIMARY KEY, phone VARCHAR(255), ethnicity VARCHAR(255), she_from VARCHAR(255), body_type VARCHAR(255), does VARCHAR(255))")
+		self.connection.commit()
 
 	def createContacts(self, name, phone, ethnicity, she_from, body_type, does):
 		self.cursor.execute("INSERT INTO contacts (name, phone, ethnicity, she_from, body_type, does) VALUES (%s, %s, %s, %s, %s, %s)", (name, phone, ethnicity, she_from, body_type, does))
