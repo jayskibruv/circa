@@ -78,6 +78,3 @@
 ### Hashing:
 
 >The hashing method used to encrypt password data is the bcrypt function.
-# s17-authentication-jayskibruv
-# s17-authentication-jayskibruv
-# s17-authentication-jayskibruv
