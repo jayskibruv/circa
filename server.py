@@ -1,10 +1,11 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from http import cookies
-from urllib.parse import parse_qs
+from urllib.parse import urlparse, parse_qs
 from userdb import UsersDB
 from contactdb import ContactsDB
 from session_store import SessionStore
 import json
+import sys
 import os
 from passlib.hash import bcrypt
 
@@ -184,10 +185,19 @@ class HelloHandler(BaseHTTPRequestHandler):
         self.wfile.write(bytes("<h1>401: Unauthorized</h1>","utf-8"))
 
 def main():
-    listen = ("127.0.0.1", 8080)
+
+    db = ContactsDB()
+    db.createContactsTable()
+    db = None
+
+    port = 8080
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+
+    listen = ("0.0.0.0", port)
     server = HTTPServer(listen, HelloHandler)
 
-    print("Listening...")
+    print("Listening on", "{}:{}".format(*listen))
     server.serve_forever()
 
 main()
