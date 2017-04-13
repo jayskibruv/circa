@@ -23,7 +23,6 @@ class ContactsDB:
 
 	def __del__(self):
 		self.connection.close()
-		return
 
 	def getContacts(self):
 		self.cursor.execute("SELECT * FROM contacts")
