@@ -75,7 +75,7 @@ var sendToServer = function () {
   password = passWord.value
   var data = "fname=" + encodeURIComponent(fname) + "&lname=" + encodeURIComponent(lname) + "&email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
 
-  request.open("POST","http://localhost:8080/users");
+  request.open("POST","https://circa.herokuapp.com/users");
 	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   request.withCredentials = true;
 	request.send(data);
@@ -262,7 +262,7 @@ var getFromServer = function () {
         }
 
 }
-request.open("GET","http://localhost:8080/contacts");
+request.open("GET","https://circa.herokuapp.com/contacts");
 request.withCredentials = true;
 request.send();
 }
@@ -324,7 +324,7 @@ var loginToServer = function (email) {
   authpw = in_passWord.value
   var data = "in-email=" + encodeURIComponent(authemail) + "&in-password=" + encodeURIComponent(authpw);
 
-  request.open("POST","http://localhost:8080/sessions");
+  request.open("POST","https://circa.herokuapp.com/sessions");
   request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   request.withCredentials = true;
   request.send(data);
