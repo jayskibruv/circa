@@ -1,0 +1,290 @@
+* { box-sizing:border-box; }
+
+/* basic stylings ------------------------------------------ */
+body {
+  /*opacity:0;
+  transition: 1s opacity;*/
+  background-size:110%;
+
+}
+
+body:hover{
+  /*opacity:1;
+  transition:1s opacity;*/
+}
+
+#sign-up-or-log-in{
+  margin:auto;
+}
+
+#sign-up-submit{
+  background:none;
+  border:0px;
+  opacity:0.5;
+  transition: opacity .25s ease-in-out;
+-moz-transition: opacity .25s ease-in-out;
+-webkit-transition: opacity .25s ease-in-out;
+}
+
+#sign-up-submit:hover{
+  opacity:1.0;
+}
+
+#log-in-submit{
+  background:none;
+  border:0px;
+  opacity:0.5;
+  transition: opacity .25s ease-in-out;
+-moz-transition: opacity .25s ease-in-out;
+-webkit-transition: opacity .25s ease-in-out;
+}
+
+#log-in-submit:hover{
+  opacity:1.0;
+}
+
+#facebook-login {
+  width:50%;
+  margin:-3% auto 0 auto;
+  opacity:0.5;
+  transition: opacity .25s ease-in-out;
+-moz-transition: opacity .25s ease-in-out;
+-webkit-transition: opacity .25s ease-in-out;
+}
+
+#facebook-login:hover{
+  opacity:1.0
+}
+
+#contactsTable{
+	margin-top:2%;
+	color:black;
+	font-family:arial, sans-serif;
+  font-size:9px;
+  border: 1px solid #ffffff;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+#navOpen{
+  font-family:Arial;
+  color:#fff;
+  font-size:11px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.reg-container 		{
+  font-family:'Helvetica';
+  width:600px;
+  margin:30px auto 0;
+  display:block;
+  background:transparent;
+  padding:10px 50px 50px;
+  margin:auto;
+  text-align:center;
+}
+
+.login-container 		{
+  font-family:'Helvetica';
+  width:600px;
+  margin:30px auto 0;
+  display:none;
+  background:transparent;
+  padding:10px 50px 50px;
+  margin:auto;
+  text-align:center;
+}
+h2 		 {
+  text-align:center;
+  margin-bottom:50px;
+}
+h2 small {
+  font-weight:normal;
+  color:#fff;
+  display:block;
+}
+
+/* form starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+  margin-bottom:45px;
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  background:transparent;
+  color:#fff;
+  border:none;
+  border-bottom:1px solid #ffffff;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,.1) inset;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#ffffff;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  background:transparent;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#ffffff;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#ffffff;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+.buttons{
+  opacity:0.5;
+  transition: opacity .25s ease-in-out;
+-moz-transition: opacity .25s ease-in-out;
+-webkit-transition: opacity .25s ease-in-out;
+}
+
+.buttons:hover{
+  opacity:1.0;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+.centerimg{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+#register
+{
+  margin:auto;
+  width:300px;
+  margin-top:5%;
+}
+
+#log-in
+{
+  margin:auto;
+  width:300px;
+  margin-top:5%;
+}
+
+#title {
+  padding-top:3%;
+  margin-bottom:-2%;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:transparent; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:transparent; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:transparent; }
+  to 	{ width:0; background:transparent; }
+}
