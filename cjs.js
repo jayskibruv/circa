@@ -359,7 +359,9 @@ window.onload = function() {
 // http://stackoverflow.com/questions/19369426/random-background-image-on-refresh
 
 function randomBackground() {
-    var backGrounds = ["assets/bgs/salara.jpg","assets/bgs/venice.jpg", "assets/bgs/france.jpg", "assets/bgs/dubai.jpg", "assets/bgs/greece.jpg", "assets/bgs/espana.jpg"];
+    var backGrounds = ["https://s3-us-west-1.amazonaws.com/circaapp-assets/assets/bgs/salara.jpg","https://s3-us-west-1.amazonaws.com/circaapp-assets/assets/bgs/venice.jpg",
+    "https://s3-us-west-1.amazonaws.com/circaapp-assets/assets/bgs/france.jpg", "https://s3-us-west-1.amazonaws.com/circaapp-assets/assets/bgs/dubai.jpg",
+    "https://s3-us-west-1.amazonaws.com/circaapp-assets/assets/bgs/greece.jpg", "https://s3-us-west-1.amazonaws.com/circaapp-assets/assets/bgs/espana.jpg"];
 
     $("body").css({
         "background" : "url("+ backGrounds[Math.floor(Math.random() * backGrounds.length)] + ") no-repeat",
