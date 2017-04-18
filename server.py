@@ -52,6 +52,8 @@ class HelloHandler(BaseHTTPRequestHandler):
             else:
                 self.send_response(401)
                 self.end_headers()
+        else:
+            self.handle404()
 
     def load_session(self):
         if "sessionId" in self.cookie:
