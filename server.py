@@ -24,11 +24,10 @@ class HelloHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         self.load_cookie()
         self.load_session()
-        resourceName, resourceId = self.parsePath()
 
-        if resourceName == "/users":
+        if self.path == "/users":
         	self.handleUserCreate()
-        elif resourceName == "/sessions":
+        elif self.path == "/sessions":
             self.handleUserAuthentication()
         else:
         	self.handle404()
@@ -42,10 +41,9 @@ class HelloHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.load_cookie()
         self.load_session()
-        resourceName, resourceId = self.parsePath()
-        if resourceName == "/contacts":
+        if self.path == "/contacts":
             self.handleResource()
-        elif resourceName == "/sessions":
+        elif self.path == "/sessions":
             if "user_id" in self.session:
                 print("USER ID: ", self.session['user_id'])
                 self.send_response(200)
