@@ -262,7 +262,7 @@ var getFromServer = function () {
         }
 
 }
-request.open("GET","https://circa.herokuapp.com/");
+request.open("GET","https://circa.herokuapp.com/"+"contacts");
 request.withCredentials = true;
 request.send();
 }
