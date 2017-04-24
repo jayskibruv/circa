@@ -31,11 +31,11 @@ class UsersDB:
     	return self.cursor.fetchall()
 
     def getUser(self, email):
-    	self.cursor.execute("SELECT * FROM users WHERE email = (%s)", (email,))
+    	self.cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
     	return self.cursor.fetchone()
 
     def getUserId(self, email):
-    	self.cursor.execute("SELECT id FROM users WHERE email = (%s)", (email,))
+    	self.cursor.execute("SELECT id FROM users WHERE email = %s", (email,))
     	return self.cursor.fetchone()
 
     def createUsersTable(self):
