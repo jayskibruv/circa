@@ -187,13 +187,13 @@ class HelloHandler(BaseHTTPRequestHandler):
 
     def handle404(self):
     	self.send_response(404)
-    	self.send_header("Content-type", "text/plain")
+    	self.send_header("Content-type", "text/html")
     	self.end_headers()
     	self.wfile.write(bytes("<h1>404: Not Found</h1>","utf-8"))
 
     def handle401(self):
         self.send_response(401)
-        self.send_header("Content-type", "text/plain")
+        self.send_header("Content-type", "text/html")
         self.end_headers()
         self.wfile.write(bytes("<h1>401: Unauthorized</h1>","utf-8"))
 
