@@ -27,23 +27,23 @@ class UsersDB:
         return
 
     def getUsers(self):
-    	self.cursor.execute("SELECT * FROM "users"")
+    	self.cursor.execute("SELECT * FROM users")
     	return self.cursor.fetchall()
 
     def getUser(self, email):
-    	self.cursor.execute("SELECT * FROM "users" WHERE email = (%s)", (email,))
+    	self.cursor.execute("SELECT * FROM users WHERE email = (%s)", (email,))
     	return self.cursor.fetchone()
 
     def getUserId(self, email):
-    	self.cursor.execute("SELECT id FROM "users" WHERE email = (%s)", (email,))
+    	self.cursor.execute("SELECT id FROM users WHERE email = (%s)", (email,))
     	return self.cursor.fetchone()
 
     def createUsersTable(self):
-        self.cursor.execute("CREATE TABLE IF NOT EXISTS "users" (id SERIAL PRIMARY KEY, f_name, l_name, email, encrypted_password)")
+        self.cursor.execute("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, f_name, l_name, email, encrypted_password)")
         self.connection.commit()
 
     def createUser(self, first_name, last_name, email, password):
-        self.cursor.execute("INSERT INTO "users" (f_name, l_name, email, encrypted_password) VALUES (%s, %s, %s, %s)", (first_name, last_name, email, password))
+        self.cursor.execute("INSERT INTO users (f_name, l_name, email, encrypted_password) VALUES (%s, %s, %s, %s)", (first_name, last_name, email, password))
         self.connection.commit()
         return
 
