@@ -109,9 +109,9 @@ var getFromServer = function () {
           logInButton.parentNode.removeChild(logInButton);
           facebookLogIn.parentNode.removeChild(facebookLogIn);
           contacts = JSON.parse(request.responseText)
-					var contacts_table = document.createElement("TABLE");
+					var contacts_table = document.createElement("table");
 					contacts_table.setAttribute("id","contactsTable");
-					var sidebar_div = document.createElement("DIV");
+					var sidebar_div = document.createElement("div");
 					sidebar_div.setAttribute("id","mySideNav");
 					sidebar_div.setAttribute("class","sidenav");
           var sideBarOpen = document.getElementById("navOpen")
@@ -184,9 +184,9 @@ var getFromServer = function () {
 
 
               contacts = JSON.parse(request.responseText)
-    					var contacts_table = document.createElement("TABLE");
+    					var contacts_table = document.createElement("table");
     					contacts_table.setAttribute("id","contactsTable");
-    					var sidebar_div = document.createElement("DIV");
+    					var sidebar_div = document.createElement("div");
     					sidebar_div.setAttribute("id","mySideNav");
     					sidebar_div.setAttribute("class","sidenav");
               var sideBarOpen = document.getElementById("navOpen")
@@ -246,7 +246,7 @@ var getFromServer = function () {
 								content: 'Please login before continuing.',
 								icon: $.sweetModal.ICON_WARNING
 							});
-              var sidebar_div = document.createElement("DIV");
+              var sidebar_div = document.createElement("div");
               sidebar_div.setAttribute("id","mySideNav");
               sidebar_div.setAttribute("class","sidenav");
               body.appendChild(sidebar_div);
