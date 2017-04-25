@@ -39,7 +39,7 @@ class UsersDB:
     	return self.cursor.fetchone()
 
     def createUsersTable(self):
-        self.cursor.execute("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, f_name, l_name, email, encrypted_password)")
+        self.cursor.execute("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, f_name VARCHAR(255), l_name VARCHAR(255), email VARCHAR(255), encrypted_password VARCHAR(255))")
         self.connection.commit()
 
     def createUser(self, first_name, last_name, email, password):
