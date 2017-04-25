@@ -16,8 +16,9 @@ class HelloHandler(BaseHTTPRequestHandler):
 
     def do_OPTIONS(self):
         self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin",  "*")
         self.send_header("Access-Control-Allow-Methods","POST, GET, OPTIONS, PUT, DELETE")
-        self.send_header("Access-Control-Allow-Headers","Content-Type")
+        self.send_header("Access-Control-Allow-Headers","Accept, Content-Type, Origin")
         self.end_headers()
         return
 
