@@ -190,6 +190,9 @@ def main():
     db = ContactsDB()
     db.createContactsTable()
     db = None
+    db = UsersDB()
+    db.createUsersTable()
+    db = None
 
     port = 8080
     if len(sys.argv) > 1:
