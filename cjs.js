@@ -177,6 +177,7 @@ var getFromServer = function () {
 
 						});
 
+            var sideBarOpen = document.getElementById("navOpen")
             sideBarOpen.style.display = "none";
 
             if (request.status >= 200 && request.status < 400) {
