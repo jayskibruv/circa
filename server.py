@@ -111,7 +111,7 @@ class HelloHandler(BaseHTTPRequestHandler):
         self.send_response(201)
 
         self.send_header("Access-Control-Allow-Origin","*")
-        self.send_header("Content-Type", "application/x-www-form-urlencoded")
+        self.send_header("Content-Type","application/x-www-form-urlencoded")
 
         name = data['name'][0]
         phone = data['phone'][0]
@@ -122,10 +122,9 @@ class HelloHandler(BaseHTTPRequestHandler):
         db = ContactsDB()
 
         if name != "" or number != "":
-        	db.createContacts(name, phone, ethnicity, she_from, body_type, does)
+            db.createContacts(name, phone, ethnicity, she_from, body_type, does)
         else:
-        	print("No name or phone number provided. Contact cannot be created.")
-
+            print("No name or phone number provided. Contact cannot be created.")
 
         print("CONTACT CREATED: " + json_log)
         self.end_headers()
