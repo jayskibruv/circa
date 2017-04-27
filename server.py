@@ -102,34 +102,34 @@ class HelloHandler(BaseHTTPRequestHandler):
         return
 
     def handleNewContact(self):
-		length = self.headers['Content-Length']
-		length = int(length)
+        length = self.headers['Content-Length']
+        length = int(length)
 
-		body = self.rfile.read(length).decode("utf-8")
-		data = parse_qs(body)
-		json_log = json.dumps(data)
-		self.send_response(201)
+        body = self.rfile.read(length).decode("utf-8")
+        data = parse_qs(body)
+        json_log = json.dumps(data)
+        self.send_response(201)
 
-		self.send_header("Access-Control-Allow-Origin","*")
-		self.send_header("Content-Type", "application/x-www-form-urlencoded")
+        self.send_header("Access-Control-Allow-Origin","*")
+        self.send_header("Content-Type", "application/x-www-form-urlencoded")
 
-		name = data['name'][0]
-		phone = data['phone'][0]
-		ethnicity = data['ethnicity'][0]
-		she_from = data['she_from'][0]
-		body_type = data['body_type'][0]
-		does = data['does'][0]
-		db = ContactsDB()
+        name = data['name'][0]
+        phone = data['phone'][0]
+        ethnicity = data['ethnicity'][0]
+        she_from = data['she_from'][0]
+        body_type = data['body_type'][0]
+        does = data['does'][0]
+        db = ContactsDB()
 
-		if name != "" or number != "":
-			db.createContacts(name, phone, ethnicity, she_from, body_type, does)
-		else:
-			print("No name or phone number provided. Contact cannot be created.")
+        if name != "" or number != "":
+        	db.createContacts(name, phone, ethnicity, she_from, body_type, does)
+        else:
+        	print("No name or phone number provided. Contact cannot be created.")
 
 
-		print("CONTACT CREATED: " + json_log)
-		self.end_headers()
-		return
+        print("CONTACT CREATED: " + json_log)
+        self.end_headers()
+        return
 
     def handleResource(self):
 

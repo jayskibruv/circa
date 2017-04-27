@@ -87,7 +87,6 @@ var sendNewContact = function () {
 
 	request.open("POST","https://circa.herokuapp.com/contacts");
 	request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  request.withCredentials = true;
 	request.send(data);
 
 	shawtyName.value = "";
