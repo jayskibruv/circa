@@ -3,6 +3,7 @@ var logIn = document.getElementById("login-container")
 var newContact = document.getElementById("new-contact-form")
 var signUpButton = document.getElementById("sign-up-button")
 var logInButton = document.getElementById("log-in-button")
+var newContactSubmit = document.getElementById("new-contact-submit")
 var facebookLogIn = document.getElementById("facebook-login")
 var signUpSubmit = document.getElementById("sign-up-submit")
 var logInSubmit = document.getElementById("log-in-submit")
@@ -45,7 +46,7 @@ var sendNewContact = function () {
 	var body_type = shawtyBody.value;
 	var shawtyDoes = document.getElementById("does")
 	var does = shawtyDoes.value;
-	var data = "id=" + encodeURIComponent(id) + "&name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone) + "&ethnicity=" + encodeURIComponent(ethnicity) + "&she_from=" + encodeURIComponent(she_from) + "&body_type=" + encodeURIComponent(body_type) + "&does=" + encodeURIComponent(does);
+	var data = "name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone) + "&ethnicity=" + encodeURIComponent(ethnicity) + "&she_from=" + encodeURIComponent(she_from) + "&body_type=" + encodeURIComponent(body_type) + "&does=" + encodeURIComponent(does);
 
 	if (name=="" || phone==""){
 
@@ -55,29 +56,38 @@ var sendNewContact = function () {
 
 	else{
 
-		id += 1
-		var row = table.insertRow(-1);
-		row.id = 'r' + id;
-	    var cell1 = row.insertCell(0);
-	    var cell2 = row.insertCell(1);
-	    var cell3 = row.insertCell(2);
-	    var cell4 = row.insertCell(3);
-	    var cell5 = row.insertCell(4);
-	    var cell6 = row.insertCell(5);
-	    var cell7 = row.insertCell(6);
-	    cell1.innerHTML = id;
-	    cell2.innerHTML = name;
-	    cell3.innerHTML = phone;
-	    cell4.innerHTML = ethnicity;
-	    cell5.innerHTML = she_from;
-	    cell6.innerHTML = body_type;
-	    cell7.innerHTML = does;
+    // var contactsTable = document.getElementById("contactsTable")
+		// var row = contactsTable.insertRow(-1);
+	  //   var cell1 = row.insertCell(0);
+	  //   var cell2 = row.insertCell(1);
+	  //   var cell3 = row.insertCell(2);
+	  //   var cell4 = row.insertCell(3);
+	  //   var cell5 = row.insertCell(4);
+	  //   var cell6 = row.insertCell(5);
+	  //   cell1.innerHTML = name;
+	  //   cell2.innerHTML = phone;
+	  //   cell3.innerHTML = ethnicity;
+	  //   cell4.innerHTML = she_from;
+	  //   cell5.innerHTML = body_type;
+	  //   cell6.innerHTML = does;
+      $.sweetModal({
+      content: "New contact created!",
+      icon: $.sweetModal.ICON_SUCCESS,
+
+      buttons: [
+        {
+          label: "Thanks!",
+          classes: "greenB"
+        }
+      ]
+    });
 	}
 
 
 
-	request.open("POST","http://localhost:8080/contacts");
+	request.open("POST","https://circa.herokuapp.com/contacts");
 	request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  request.withCredentials = true;
 	request.send(data);
 
 	shawtyName.value = "";
@@ -423,6 +433,11 @@ signUpSubmit.onclick = function () {
 
 logInSubmit.onclick = function () {
   loginToServer();
+}
+
+newContactSubmit.onclick = function () {
+
+  sendNewContact();
 }
 
 window.onload = function() {
