@@ -31,7 +31,7 @@ class ContactsDB:
 		return self.cursor.fetchall()
 
 	def createContactsTable(self):
-		self.cursor.execute("CREATE TABLE IF NOT EXISTS contacts (id SERIAL PRIMARY KEY, "name" VARCHAR(255), phone VARCHAR(255), ethnicity VARCHAR(255), she_from VARCHAR(255), body_type VARCHAR(255), does VARCHAR(255))")
+		self.cursor.execute("CREATE TABLE IF NOT EXISTS contacts (id SERIAL PRIMARY KEY, name VARCHAR(255), phone VARCHAR(255), ethnicity VARCHAR(255), she_from VARCHAR(255), body_type VARCHAR(255), does VARCHAR(255))")
 		self.connection.commit()
 
 	def createContacts(self, name, phone, ethnicity, she_from, body_type, does):
