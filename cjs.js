@@ -1,11 +1,13 @@
 var signUp = document.getElementById("reg-container")
 var logIn = document.getElementById("login-container")
+var newContact = document.getElementById("new-contact-form")
 var signUpButton = document.getElementById("sign-up-button")
 var logInButton = document.getElementById("log-in-button")
 var facebookLogIn = document.getElementById("facebook-login")
 var signUpSubmit = document.getElementById("sign-up-submit")
 var logInSubmit = document.getElementById("log-in-submit")
 var body = document.getElementsByTagName("body")[0];
+newContact.style.display = "none"
 
 var openNav = function () {
     document.getElementById("mySideNav").style.width = "350px";
@@ -16,6 +18,75 @@ var closeNav = function () {
     document.getElementById("mySideNav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
 }
+
+var sendNewContact = function () {
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function () {
+		if (request.readyState == XMLHttpRequest.DONE) {
+			if (request.status >= 200 && request.status < 400) {
+				console.log("200 OK. Request has gone through.");
+				//getFromServer();
+			} else {
+				console.error("Something has gone wrong.");
+		}
+
+	}
+	};
+
+	var shawtyName = document.getElementById("name");
+	var name = shawtyName.value;
+	var shawtyPhone = document.getElementById("phone");
+	var phone = shawtyPhone.value;
+	var shawtyEthnicity = document.getElementById("ethnicity")
+	var ethnicity = shawtyEthnicity.value;
+	var shawtyFrom = document.getElementById("from")
+	var she_from = shawtyFrom.value;
+	var shawtyBody = document.getElementById("body_type")
+	var body_type = shawtyBody.value;
+	var shawtyDoes = document.getElementById("does")
+	var does = shawtyDoes.value;
+	var data = "id=" + encodeURIComponent(id) + "&name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone) + "&ethnicity=" + encodeURIComponent(ethnicity) + "&she_from=" + encodeURIComponent(she_from) + "&body_type=" + encodeURIComponent(body_type) + "&does=" + encodeURIComponent(does);
+
+	if (name=="" || phone==""){
+
+		alert("No name or number? You must have no game. We can't do anything with that.")
+		console.error("No name or number provided. Contact cannot be created.")
+	}
+
+	else{
+
+		id += 1
+		var row = table.insertRow(-1);
+		row.id = 'r' + id;
+	    var cell1 = row.insertCell(0);
+	    var cell2 = row.insertCell(1);
+	    var cell3 = row.insertCell(2);
+	    var cell4 = row.insertCell(3);
+	    var cell5 = row.insertCell(4);
+	    var cell6 = row.insertCell(5);
+	    var cell7 = row.insertCell(6);
+	    cell1.innerHTML = id;
+	    cell2.innerHTML = name;
+	    cell3.innerHTML = phone;
+	    cell4.innerHTML = ethnicity;
+	    cell5.innerHTML = she_from;
+	    cell6.innerHTML = body_type;
+	    cell7.innerHTML = does;
+	}
+
+
+
+	request.open("POST","http://localhost:8080/contacts");
+	request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	request.send(data);
+
+	shawtyName.value = "";
+	shawtyPhone.value = "";
+	shawtyEthnicity.value = "";
+	shawtyFrom.value = "";
+	shawtyBody.value = "";
+	shawtyDoes.value = "";
+};
 
 var sendToServer = function () {
 	var request = new XMLHttpRequest();
@@ -105,6 +176,7 @@ var getFromServer = function () {
 
           signUp.parentNode.removeChild(signUp);
           logIn.parentNode.removeChild(logIn);
+          newContact.style.display = "";
           signUpButton.parentNode.removeChild(signUpButton);
           logInButton.parentNode.removeChild(logInButton);
           facebookLogIn.parentNode.removeChild(facebookLogIn);
@@ -160,6 +232,7 @@ var getFromServer = function () {
 				}
 
 				console.log(contacts_table)
+        console.log(sidebar_div)
 
         } else {
 
@@ -189,6 +262,7 @@ var getFromServer = function () {
     					var sidebar_div = document.createElement("div");
     					sidebar_div.setAttribute("id","mySideNav");
     					sidebar_div.setAttribute("class","sidenav");
+              newContact.style.display = "";
               var sideBarOpen = document.getElementById("navOpen")
               sideBarOpen.style.display = "";
     					var aTag = document.createElement('a');
